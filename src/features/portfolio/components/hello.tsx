@@ -18,7 +18,7 @@ export function Hello() {
       </PanelHeader>
 
       <PanelContent className="pt-5 pb-6">
-        <Prose className="prose-p:mt-[0.5em] prose-p:mb-[0.5em] prose-p:first:mt-0 prose-p:last:mb-0">
+        <Prose className="prose-p:mt-[0.5em] prose-p:mb-[0.5em] prose-p:first:mt-0 prose-p:last:mb-0 leading-relaxed tracking-tight font-space-mono ">
           <Markdown>{USER.about}</Markdown>
         </Prose>
       </PanelContent>

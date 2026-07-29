@@ -9,40 +9,33 @@ import type { Experience } from "@/features/portfolio/types/experiences"
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "shadcncraft",
-    companyName: "shadcncraft",
+    id: "innobyte",
+    companyName: "Innobyte Services",
     companyLogo: "https://assets.chanhdai.com/images/companies/shadcncraft.svg",
     companyWebsite: "https://shadcncraft.com?atp=ncdai",
-    location: "Melbourne, Australia",
+    location: "Remote",
     locationType: "Remote",
     positions: [
       {
         id: "1",
-        title: "Design Engineer",
+        title: "Software Engineer Intern (Frontend)",
         employmentPeriod: {
-          start: "01.2026",
+          start: "Oct 2025",
+          end: "Nov 2025"
         },
-        employmentType: "Full-time",
+        employmentType: "Intern",
         icon: <CodeXmlIcon />,
-        description: `- Design and build Pro components/blocks, from Figma to production-ready React.
-- Build and maintain the @shadcncraft registry.
-- Build and enhance features for the marketing website.
-- Build and maintain Storybook documentation.
-- Design and build the Upgrade Bundle feature.`,
+        description: `- Architected and delivered end-to-end frontend features using React.js and JavaScript.
+- Built a scalable, reusable React.js component library enforcing design system consistency across 10+ pages.`,
         skills: [
-          "TypeScript",
-          "Next.js",
+          "JavaScript",
+          "React.js",
           "Tailwind CSS",
-          "shadcn/registry",
-          "Figma",
-          "Polar",
-          "Storybook",
-          "Design",
         ],
         isExpanded: true,
       },
     ],
-    isCurrentEmployer: true,
+    isCurrentEmployer: false,
   },
   {
     id: "quaric",

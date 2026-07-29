@@ -27,11 +27,10 @@ export const USER: User = {
       experienceId: "shadcncraft",
     }
   ],
-  about: `I’m Chánh Đại (call me Dai) — a Design Engineer with 5+ years of experience, known for pixel-perfect execution and an obsessive attention to detail.
+  about: `Hi! I'm a software engineer passionate about building scalable, user-centric applications with clean and efficient code. \n
+  I enjoy exploring new technologies, tackling complex problems, and transforming ideas into meaningful, impactful projects. \n
+  Off the keyboard, you'll find me singing, playing instruments, gaming, or watching movies/shows on repeat - turns out creativity from all that sneaks into my engineering too.
 
-Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted projects.
-
-Creator of [chanhdai.com](https://github.com/ncdai/chanhdai.com) (2k stars), [React Wheel Picker](https://react-wheel-picker.chanhdai.com) (30k+ weekly downloads, ▲Vercel OSS Program), and [ZaDark](https://zadark.com) (80k+ downloads, 30k+ users) — peak metrics.
 `,
   avatar: "./satvik1.jpeg",
   avatarVariants: {
