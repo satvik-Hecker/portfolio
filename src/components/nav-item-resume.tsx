@@ -1,5 +1,11 @@
-import { FileDown } from "lucide-react"
+"use client"
 
+import { useRef } from "react"
+
+import {
+  FileBadgeIcon,
+  type FileBadgeIconHandle,
+} from "@/components/animated-icons/file-badge-icon"
 import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
@@ -8,6 +14,10 @@ import {
 } from "@/components/base/ui/tooltip"
 
 export function NavItemResume() {
+  const iconRef = useRef<FileBadgeIconHandle>(null)
+  const start = () => iconRef.current?.startAnimation()
+  const stop = () => iconRef.current?.stopAnimation()
+
   return (
     <Tooltip>
       <TooltipTrigger
@@ -23,8 +33,12 @@ export function NavItemResume() {
                 target="_blank"
                 rel="noopener"
                 aria-label="Download resume"
+                onMouseEnter={start}
+                onMouseLeave={stop}
+                onFocus={start}
+                onBlur={stop}
               >
-                <FileDown className="size-5" />
+                <FileBadgeIcon ref={iconRef} />
                 <span className="sr-only">Download resume</span>
               </a>
             }
