@@ -1,11 +1,13 @@
 "use client"
 
 import { useTheme } from "next-themes"
+import { flushSync } from "react-dom"
 import { useHotkeys } from "react-hotkeys-hook"
 
 import { META_THEME_COLORS } from "@/config/site"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
 import { useMetaColor } from "@/hooks/use-meta-color"
+import { startBatReveal } from "@/lib/bat-reveal"
 
 import { MoonIcon } from "./animated-icons/moon-icon"
 import { SunMediumIcon } from "./animated-icons/sun-medium-icon"
@@ -22,12 +24,18 @@ export function ThemeToggle() {
 
   const switchTheme = () => {
     click()
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-    setMetaColor(
-      resolvedTheme === "dark"
-        ? META_THEME_COLORS.light
-        : META_THEME_COLORS.dark
-    )
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
+
+    startBatReveal(() => {
+      flushSync(() => setTheme(nextTheme))
+      // next-themes applies the class in an effect, which runs too late for the
+      // view transition to capture the new theme, so apply it here as well
+      const root = document.documentElement
+      root.classList.remove("light", "dark")
+      root.classList.add(nextTheme)
+      root.style.colorScheme = nextTheme
+      setMetaColor(META_THEME_COLORS[nextTheme])
+    })
   }
 
   useHotkeys("d", () => switchTheme())
