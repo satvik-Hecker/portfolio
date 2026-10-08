@@ -1,4 +1,4 @@
-import { CodeXmlIcon } from "lucide-react"
+import { BriefcaseBusinessIcon, CodeXmlIcon } from "lucide-react"
 
 import type { Experience } from "@/features/portfolio/types/experiences"
 
@@ -6,6 +6,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "innobyte",
     companyName: "Innobyte Services",
+    companyIcon: <BriefcaseBusinessIcon strokeWidth={1.8} />,
     location: "Remote",
     locationType: "Remote",
     positions: [
