@@ -21,11 +21,11 @@ export function SiteFooter() {
             <dd>
               <a
                 className="link-underline"
-                href={xLink.href}
+                href={githubLink.href}
                 target="_blank"
                 rel="noopener"
               >
-                {xLink.handle}
+                {githubLink.handle}
               </a>
             </dd>
           </Item>

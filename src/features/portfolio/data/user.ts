@@ -23,8 +23,7 @@ export const USER: User = {
     {
       title: "CSE Undergrad",
       company: "Bennett University",
-      website: "https://shadcncraft.com?atp=ncdai",
-      experienceId: "shadcncraft",
+      website: "https://www.bennett.edu.in",
     }
   ],
   about: `Hi! I'm a software engineer passionate about building scalable, user-centric applications with clean and efficient code. \n

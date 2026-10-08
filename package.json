@@ -1,24 +1,17 @@
 {
-  "name": "chanhdai.com",
+  "name": "portfolio",
   "version": "0.1.0",
-  "description": "A pixel-perfect dev portfolio and shadcn registry.",
-  "homepage": "https://chanhdai.com",
+  "description": "Personal portfolio website of Satvik Tiwari.",
+  "homepage": "https://sxtvik.site",
   "license": "MIT",
   "author": {
-    "name": "Nguyen Chanh Dai",
-    "email": "dai@chanhdai.com",
-    "url": "https://github.com/ncdai"
+    "name": "Satvik Tiwari",
+    "email": "satvikk.tiwariii@gmail.com",
+    "url": "https://github.com/satvik-Hecker"
   },
-  "contributors": [
-    {
-      "name": "Nguyen Chanh Dai",
-      "email": "dai@chanhdai.com",
-      "url": "https://github.com/ncdai"
-    }
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncdai/chanhdai.com.git"
+    "url": "git+https://github.com/satvik-Hecker/portfolio.git"
   },
   "scripts": {
     "dev": "next dev",
@@ -46,7 +39,6 @@
     "@hugeicons/core-free-icons": "^4.1.1",
     "@hugeicons/react": "^1.1.6",
     "@icons-pack/react-simple-icons": "^13.13.0",
-    "@ncdai/react-wheel-picker": "^1.2.0",
     "@next/third-parties": "^16.2.10",
     "@number-flow/react": "^0.6.0",
     "@openpanel/web": "^1.4.1",

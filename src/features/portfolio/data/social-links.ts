@@ -6,35 +6,36 @@ import type { SocialProfile } from "@/features/portfolio/types/social-links"
  * so adding a profile here forces the icon map to stay in sync at compile time.
  */
 export const SOCIAL = {
+  // Placeholder hrefs ("#") stay until the real profile links are added.
   x: {
     title: "X",
-    handle: "@iamncdai",
-    href: "https://x.com/iamncdai",
+    handle: "satvik-Hecker",
+    href: "#",
   },
   github: {
     title: "GitHub",
-    handle: "ncdai",
-    href: "https://github.com/ncdai",
+    handle: "satvik-Hecker",
+    href: "https://github.com/satvik-Hecker",
   },
   linkedin: {
     title: "LinkedIn",
-    handle: "ncdai",
-    href: "https://linkedin.com/in/ncdai",
+    handle: "satvik-Hecker",
+    href: "#",
   },
   dailydotdev: {
     title: "daily.dev",
-    handle: "@ncdai",
-    href: "https://app.daily.dev/ncdai",
+    handle: "satvik-Hecker",
+    href: "#",
   },
   discord: {
     title: "Discord",
-    handle: "ncdai",
-    href: "https://discord.com/users/1186630645443739651",
+    handle: "satvik-Hecker",
+    href: "#",
   },
   youtube: {
     title: "YouTube",
-    handle: "@ncdai",
-    href: "https://www.youtube.com/@ncdai",
+    handle: "satvik-Hecker",
+    href: "#",
   },
 } satisfies Record<string, SocialProfile>
 
