@@ -91,6 +91,20 @@ export function EducationItem({ item }: { item: Education }) {
               </dd>
             </div>
 
+            {item.grade && (
+              <>
+                <Separator
+                  className="data-vertical:h-4 data-vertical:self-center"
+                  orientation="vertical"
+                  aria-hidden
+                />
+
+                <div>
+                  <dt className="sr-only">Grade</dt>
+                  <dd className="tabular-nums">{item.grade}</dd>
+                </div>
+              </>
+            )}
           </dl>
         </CollapsibleTrigger>
 

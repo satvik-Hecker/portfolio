@@ -10,6 +10,7 @@ export const EDUCATION: Education[] = [
       start: "2023",
       end: "2027",
     },
+    grade: "CGPA: 8.5",
     skills: [
       "C++",
       "Java",
