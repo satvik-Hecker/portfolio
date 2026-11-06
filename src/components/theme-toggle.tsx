@@ -8,6 +8,7 @@ import { META_THEME_COLORS } from "@/config/site"
 import { useClickSound } from "@/hooks/soundcn/use-click-sound"
 import { useMetaColor } from "@/hooks/use-meta-color"
 import { startBatReveal } from "@/lib/bat-reveal"
+import { haptic } from "@/lib/haptic"
 
 import { MoonIcon } from "./animated-icons/moon-icon"
 import { SunMediumIcon } from "./animated-icons/sun-medium-icon"
@@ -24,6 +25,7 @@ export function ThemeToggle() {
 
   const switchTheme = () => {
     click()
+    haptic()
     const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
 
     startBatReveal(() => {

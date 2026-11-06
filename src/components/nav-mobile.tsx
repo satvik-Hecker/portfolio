@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 
 import type { NavItem } from "@/types/nav"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { haptic } from "@/lib/haptic"
 import { Button } from "@/components/base/ui/button"
 import {
   Popover,
@@ -22,6 +23,7 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
   const pathname = usePathname()
 
   const handleOpenChange = useCallback((open: boolean) => {
+    if (open) haptic()
     setOpen(open)
   }, [])
 
@@ -54,7 +56,10 @@ export function NavMobile({ items }: { items: NavItem<Route>[] }) {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className="rounded-lg px-3 py-1.5 text-base aria-[current=page]:bg-accent"
-                onClick={() => handleOpenChange(false)}
+                onClick={() => {
+                  haptic()
+                  handleOpenChange(false)
+                }}
               >
                 {link.title}
               </Link>

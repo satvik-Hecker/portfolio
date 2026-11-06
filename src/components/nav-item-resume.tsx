@@ -6,6 +6,8 @@ import {
   FileBadgeIcon,
   type FileBadgeIconHandle,
 } from "@/components/animated-icons/file-badge-icon"
+import { RESUME_URL } from "@/config/site"
+import { haptic } from "@/lib/haptic"
 import { Button } from "@/components/base/ui/button"
 import {
   Tooltip,
@@ -29,23 +31,24 @@ export function NavItemResume() {
             nativeButton={false}
             render={
               <a
-                href="/resume.pdf"
+                href={RESUME_URL}
                 target="_blank"
-                rel="noopener"
-                aria-label="Download resume"
+                rel="noopener noreferrer"
+                aria-label="View resume"
+                onClick={() => haptic()}
                 onMouseEnter={start}
                 onMouseLeave={stop}
                 onFocus={start}
                 onBlur={stop}
               >
                 <FileBadgeIcon ref={iconRef} />
-                <span className="sr-only">Download resume</span>
+                <span className="sr-only">View resume</span>
               </a>
             }
           />
         }
       />
-      <TooltipContent>Download resume</TooltipContent>
+      <TooltipContent>View resume</TooltipContent>
     </Tooltip>
   )
 }
