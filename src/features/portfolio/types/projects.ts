@@ -4,11 +4,13 @@ export type Project = {
   /** Stable unique identifier (used as list key/anchor). */
   id: string
   title: string
+  /** Short label above the title, e.g. "Full-stack · Finance" */
+  category?: string
   /**
    * Project period for display and sorting.
    * Use "MM.YYYY" format. Omit `end` for ongoing projects.
    */
-  period: {
+  period?: {
     /** Start date (e.g., "05.2025"). */
     start: string
     /** End date; leave undefined for "Present". */

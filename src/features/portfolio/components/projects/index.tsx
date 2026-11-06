@@ -1,76 +1,34 @@
-import { ChevronDownIcon } from "lucide-react"
-
-import { Button } from "@/components/base/ui/button"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/base/ui/collapsible"
 import {
   Panel,
   PanelHeader,
   PanelTitle,
 } from "@/features/portfolio/components/panel"
 import { PROJECTS } from "@/features/portfolio/data/projects"
-import type { Project } from "@/features/portfolio/types/projects"
 
-import { ProjectItem } from "./project-item"
+import { ProjectCard } from "./project-card"
+import { ProjectsScrollControls } from "./projects-scroll-controls"
 
 const ID = "projects"
-const MAX = 4
+const SCROLLER_ID = "projects-scroller"
 
 export function Projects() {
   return (
     <Panel id={ID}>
-      <PanelHeader>
-        <PanelTitle>
-          Projects
-        </PanelTitle>
+      <PanelHeader className="flex items-center justify-between gap-4">
+        <PanelTitle>Projects</PanelTitle>
+        <ProjectsScrollControls scrollerId={SCROLLER_ID} />
       </PanelHeader>
 
-      <div className="p-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <ProjectList projects={PROJECTS.slice(0, MAX)} />
+      <div
+        id={SCROLLER_ID}
+        tabIndex={0}
+        aria-label="Projects, scroll sideways for more"
+        className="flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto overscroll-x-contain p-4 outline-none [scrollbar-width:none] focus-visible:inset-ring-2 focus-visible:inset-ring-ring/50 [&::-webkit-scrollbar]:hidden"
+      >
+        {PROJECTS.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
-
-      {PROJECTS.length > MAX && (
-        <Collapsible className="p-4 group/collapsible ">
-          <CollapsibleContent render={<div className="grid grid-cols-1 gap-6 sm:grid-cols-2" />}>
-            <ProjectList projects={PROJECTS.slice(MAX)} />
-          </CollapsibleContent>
-
-          <div className="mt-6 flex items-center justify-center">
-            <CollapsibleTrigger
-              render={
-                <Button
-                  className="gap-2 pr-2.5 pl-3"
-                  variant="secondary"
-                  size="sm"
-                >
-                  <span className="hidden group-data-closed/collapsible:block">
-                    Show more
-                  </span>
-
-                  <span className="hidden group-data-open/collapsible:block">
-                    Show less
-                  </span>
-
-                  <ChevronDownIcon className="group-data-open/collapsible:rotate-180" />
-                </Button>
-              }
-            />
-          </div>
-        </Collapsible>
-      )}
     </Panel>
-  )
-}
-
-function ProjectList({ projects }: { projects: Project[] }) {
-  return (
-    <>
-      {projects.map((project) => (
-        <ProjectItem key={project.id} project={project} />
-      ))}
-    </>
   )
 }
