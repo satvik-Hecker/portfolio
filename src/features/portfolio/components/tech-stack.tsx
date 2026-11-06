@@ -6,41 +6,12 @@ import Link from "next/link"
 import { Panel, PanelHeader, PanelTitle } from "./panel"
 import { motion } from "framer-motion"
 
+import { HoverBrackets } from "@/components/hover-brackets"
+
+import { toIconUrl } from "../tech-stack-icon"
+
 const ID = "stack"
 
-function toIconUrl(iconSlug: string) {
-  return iconSlug.startsWith("https://")
-    ? iconSlug
-    : `https://svgl.app/library/${iconSlug}.svg`
-}
-
-const BRACKET_CORNERS = [
-  "-top-[4px] -left-[4px] border-t border-l",
-  "-top-[4px] -right-[4px] border-t border-r",
-  "-bottom-[4px] -left-[4px] border-b border-l",
-  "-bottom-[4px] -right-[4px] border-b border-r",
-]
-
-// Dashed outline with corner brackets 3px outside the card border (4px from the padding box), revealed on hover
-function HoverBrackets() {
-  const reveal =
-    "pointer-events-none absolute opacity-0 transition-opacity duration-150 ease-out group-hover/card:opacity-100"
-  return (
-    <>
-      <span
-        aria-hidden
-        className={`${reveal} -inset-[4px] border border-dashed border-foreground/50`}
-      />
-      {BRACKET_CORNERS.map((corner) => (
-        <span
-          key={corner}
-          aria-hidden
-          className={`${reveal} size-[5px] border-foreground ${corner}`}
-        />
-      ))}
-    </>
-  )
-}
 
 function MarqueeTrack({ children, reverse = false }: { children: React.ReactNode; reverse?: boolean }) {
   return (
@@ -73,7 +44,7 @@ export function TechStack() {
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
         // Card is now a larger square (h-28 w-28) with a vertical flex column layout
-        className="group/card relative flex h-26 w-36 cursor-default flex-col items-center justify-center gap-3  border border-border bg-zinc-50/80 p-2 shadow-sm transition-[opacity,background-color,box-shadow] duration-300 dark:bg-zinc-900/40 group-hover/marquee:opacity-40 hover:!opacity-100 hover:shadow-md hover:bg-zinc-100 dark:hover:bg-zinc-800/90"
+        className="group/card group/brackets relative flex h-26 w-36 cursor-default flex-col items-center justify-center gap-3  border border-border bg-card/80 p-2 shadow-sm transition-[opacity,background-color,box-shadow] duration-300 dark:bg-zinc-900/40 group-hover/marquee:opacity-40 hover:!opacity-100 hover:shadow-md hover:bg-accent dark:hover:bg-zinc-800/90"
       >
         <HoverBrackets />
         <span className="flex size-8 shrink-0 items-center justify-center grayscale transition-all duration-300 group-hover/card:grayscale-0">

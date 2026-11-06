@@ -19,6 +19,8 @@ const BAT_VARIABLES = [
 
 type BatVariable = (typeof BAT_VARIABLES)[number]
 
+let activeTransition: ViewTransition | null = null
+
 /**
  * Runs `update` inside a view transition that reveals the new page through a
  * bat-topped shape rising from the bottom-left corner until it covers the
@@ -76,7 +78,13 @@ export function startBatReveal(update: () => void) {
   root.classList.add("bat-reveal")
 
   const transition = document.startViewTransition(update)
+  activeTransition = transition
+  // A second toggle mid-animation skips this transition; that rejection is expected
+  transition.ready.catch(() => {})
   transition.finished.finally(() => {
+    // A newer toggle owns the class and variables now; leave them in place
+    if (activeTransition !== transition) return
+    activeTransition = null
     root.classList.remove("bat-reveal")
     for (const name of BAT_VARIABLES) {
       root.style.removeProperty(name)

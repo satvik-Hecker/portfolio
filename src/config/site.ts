@@ -12,7 +12,7 @@ export const SITE_INFO = {
 }
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
+  light: "#F3F0E7",
   dark: "#09090b",
 }
 
@@ -42,6 +42,8 @@ export const MOBILE_NAV: NavItem<Route>[] = [
 
 export const X_HANDLE = SOCIAL.x.handle
 export const GITHUB_USERNAME = 'satvik-Hecker'
+export const RESUME_URL =
+  "https://drive.google.com/file/d/1Dpf4NTaPKNkEojPBJZ9uocdZPA1JcN-p/view"
 
 export const UTM_PARAMS = {
   utm_source: "sxtvik.site",
