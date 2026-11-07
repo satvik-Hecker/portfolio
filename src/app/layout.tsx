@@ -51,7 +51,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={fontVariables} suppressHydrationWarning>
+    // The fixed page frame (lg+) can't follow elastic overscroll, so rubber-banding
+    // would open a gap between it and the content; disable bounce where the frame shows
+    <html
+      lang="en"
+      className={`${fontVariables} lg:overscroll-y-none`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="text/javascript"
@@ -78,7 +84,7 @@ export default function RootLayout({
 
 
 
-      <body>
+      <body className="lg:overscroll-y-none">
         <Providers>
           <NuqsAdapter>{children}</NuqsAdapter>
         </Providers>

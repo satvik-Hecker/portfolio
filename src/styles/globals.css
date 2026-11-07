@@ -380,6 +380,7 @@
   /* Layout */
   --header-height: --spacing(14);
   --fade-bottom-height: --spacing(24);
+  --frame-gutter: --spacing(6);
 }
 
 .dark {
