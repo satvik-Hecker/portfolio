@@ -97,11 +97,41 @@ export function SiteFooter() {
 
       <SiteFooterInteractiveLogotype />
 
-      <div className="h-(--fade-bottom-height)" />
+      {/* Fixed height on md+ carries the side borders past the text; the bottom
+          rule then closes them off so the column ends on a line, not in mid-air.
+          On lg the page frame's bottom edge takes over that job. */}
+      <div className="mx-auto h-fit screen-line-bottom border-x border-line group-has-data-[slot=layout-wide]/layout:container after:z-1 after:bg-foreground/15 md:h-20 md:max-w-3xl lg:after:hidden">
+        <div className="flex items-center justify-between gap-4 px-2 py-1 font-sans text-xs text-muted-foreground">
+          <p>sxtvik.site &copy; {new Date().getFullYear()}</p>
+
+          <ul className="flex items-center gap-3">
+            {FOOTER_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  className="transition-[color] hover:text-foreground hover:underline hover:underline-offset-4"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="h-(--fade-bottom-height) lg:hidden" />
       <div className="pb-[env(safe-area-inset-bottom,0)]" />
     </footer>
   )
 }
+
+const FOOTER_LINKS = [
+  { label: "x.com", href: SOCIAL.x.href },
+  { label: "github.com", href: SOCIAL.github.href },
+  { label: "linkedin.com", href: SOCIAL.linkedin.href },
+]
 
 function Separator({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("flex h-11 w-px bg-line", className)} {...props} />
