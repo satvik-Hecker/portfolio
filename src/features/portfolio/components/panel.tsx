@@ -2,8 +2,13 @@ import React from "react"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
+import { CornerMarks } from "@/components/corner-marks"
 
-function Panel({ className, ...props }: React.ComponentProps<"section">) {
+function Panel({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"section">) {
   return (
     <section
       data-slot="panel"
@@ -12,7 +17,10 @@ function Panel({ className, ...props }: React.ComponentProps<"section">) {
         className
       )}
       {...props}
-    />
+    >
+      <CornerMarks />
+      {children}
+    </section>
   )
 }
 

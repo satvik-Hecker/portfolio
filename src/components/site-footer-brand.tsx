@@ -9,6 +9,7 @@ import {
 } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import { CornerMarks } from "@/components/corner-marks"
 
 const SPOTLIGHT_RADIUS = "10rem"
 
@@ -35,7 +36,7 @@ export function SiteFooterInteractiveLogotype() {
 
   return (
     <div className="mx-auto border-x border-line group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
-      <div className="relative screen-line-bottom after:z-1 after:bg-foreground/15">
+      <div className="relative screen-line-top screen-line-bottom before:z-1 after:z-1 after:bg-foreground/15">
         <CornerMarks />
 
         <div
@@ -87,25 +88,4 @@ function Wordmark({ muted = true }: { muted?: boolean }) {
       <span className={cn(muted && "text-muted-foreground")}>.site</span>
     </p>
   )
-}
-
-const CORNER_MARKS = [
-  "top-0 left-0 -translate-y-1/2 border-l-border",
-  "top-0 right-0 -translate-y-1/2 border-r-border",
-  "bottom-0 left-0 translate-y-1/2 border-l-border",
-  "bottom-0 right-0 translate-y-1/2 border-r-border",
-]
-
-// Inward-pointing triangles where the footer rules meet the side borders
-function CornerMarks() {
-  return CORNER_MARKS.map((position) => (
-    <span
-      key={position}
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute z-2 size-0 border-[6px] border-transparent",
-        position
-      )}
-    />
-  ))
 }

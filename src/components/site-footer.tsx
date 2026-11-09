@@ -1,12 +1,9 @@
 import { cn } from "@/lib/utils"
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons"
 import { SiteFooterInteractiveLogotype } from "@/components/site-footer-brand"
 import { SOCIAL } from "@/features/portfolio/data/social-links"
 
 export function SiteFooter() {
-  const xLink = SOCIAL.x
   const githubLink = SOCIAL.github
-  const linkedinLink = SOCIAL.linkedin
 
   return (
     <footer className="max-w-screen overflow-x-clip px-2">
@@ -44,55 +41,7 @@ export function SiteFooter() {
               </ul>
             </dd>
           </Item>
-
-
-
-
         </dl>
-
-        <div className="screen-line-top screen-line-bottom flex w-full before:z-1 after:z-1">
-          <div className="mx-auto flex items-center justify-center gap-3 border-x border-line bg-background px-4">
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={xLink.href}
-              target="_blank"
-              rel="noopener"
-              aria-label="X Profile"
-            >
-              <XIcon className="size-4" />
-            </a>
-
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={githubLink.href}
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub Profile"
-            >
-              <GitHubIcon className="size-4" />
-            </a>
-
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={linkedinLink.href}
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedInIcon className="size-4" />
-            </a>
-
-
-
-
-          </div>
-        </div>
-
-
       </div>
 
       <SiteFooterInteractiveLogotype />
@@ -132,10 +81,6 @@ const FOOTER_LINKS = [
   { label: "github.com", href: SOCIAL.github.href },
   { label: "linkedin.com", href: SOCIAL.linkedin.href },
 ]
-
-function Separator({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("flex h-11 w-px bg-line", className)} {...props} />
-}
 
 function Item({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("grid grid-cols-2 gap-4", className)} {...props} />
