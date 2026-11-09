@@ -1,5 +1,6 @@
 "use client"
 
+import { IconCircleHalf2 } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 import { flushSync } from "react-dom"
 import { useHotkeys } from "react-hotkeys-hook"
@@ -10,8 +11,6 @@ import { useMetaColor } from "@/hooks/use-meta-color"
 import { startBatReveal } from "@/lib/bat-reveal"
 import { haptic } from "@/lib/haptic"
 
-import { MoonIcon } from "./animated-icons/moon-icon"
-import { SunMediumIcon } from "./animated-icons/sun-medium-icon"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./base/ui/tooltip"
 import { Button } from "./ui/button"
 import { Kbd } from "./ui/kbd"
@@ -57,11 +56,7 @@ export function ThemeToggle() {
               className="absolute size-12 pointer-fine:hidden"
               aria-hidden
             />
-            <MoonIcon className="hidden [html.dark_&]:block" aria-hidden />
-            <SunMediumIcon
-              className="hidden [html.light_&]:block"
-              aria-hidden
-            />
+            <IconCircleHalf2 className="size-5" stroke={1.75} aria-hidden />
           </Button>
         }
       />

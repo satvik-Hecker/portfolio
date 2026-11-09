@@ -108,6 +108,13 @@
   --animate-spin-ccw: spin-ccw var(--tw-animation-duration, var(--tw-duration, 6s)) linear infinite;
   --animate-collapsible-down: collapsible-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-collapsible-up: collapsible-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-caret-blink: caret-blink 1.1s steps(1) infinite;
+
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
 
   @keyframes spin-ccw {
     to {
@@ -378,7 +385,7 @@
   --chart-label: oklch(0.45 0.01 260);
 
   /* Layout */
-  --header-height: --spacing(14);
+  --header-height: --spacing(19);
   --fade-bottom-height: --spacing(24);
   --frame-gutter: --spacing(6);
 }

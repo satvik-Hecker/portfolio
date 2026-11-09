@@ -1,44 +1,78 @@
 import Link from "next/link"
-import { Shell } from "lucide-react"
+
 import { MAIN_NAV } from "@/config/site"
-import { Separator } from "@/components/base/ui/separator"
+import { cn } from "@/lib/utils"
 import { NavDesktop } from "@/components/nav-desktop"
-// import { NavItemGitHub } from "@/components/nav-item-github"
-import { NavItemResume } from "./nav-item-resume"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-// const BrandContextMenu = dynamic(
-//   () => import("@/components/brand-context-menu")
-// )
+import { NavItemResume } from "./nav-item-resume"
 
+// Vercel injects the deployed commit at build time; local builds have none
+const BUILD_ID = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "local"
 
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2 lg:top-(--frame-gutter)">
-      <div className="screen-line-top screen-line-bottom mx-auto flex h-(--header-height) items-center gap-2 border-r border-line pr-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:bg-border sm:gap-4 md:max-w-3xl">
-        <Link href="/" className="flex items-center gap-2 cursor-pointer">
-          <Shell className="size-5 mt-0"></Shell>
-          <h3 className="select-none font-pixel-square text-foreground text-2xl">{`stvk.sh`}</h3>
-        </Link>
+      <div className="screen-line-top screen-line-bottom mx-auto h-(--header-height) border-x border-line py-4 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:bg-border md:max-w-3xl">
+        {/* Inset rail: the bar sits inside the band between its own top and bottom rules */}
+        <div className="relative flex h-full items-center border-y border-line px-4 sm:px-6">
+          <HeaderNote className="top-full left-2 mt-0.5">
+            satvik@stvk.sh:~$
+            <span className="ml-1 inline-block h-2.5 w-1.5 translate-y-px bg-muted-foreground/60 motion-safe:animate-caret-blink" />
+          </HeaderNote>
+          <HeaderNote className="right-2 bottom-full mb-0.5 max-sm:hidden">
+            build {BUILD_ID}
+          </HeaderNote>
 
-        <div className="flex-1" />
+          <Link
+            href="/"
+            className="flex h-full cursor-pointer items-center border-x border-line px-2 font-pixel-square text-2xl select-none"
+          >
+            satvik
+          </Link>
 
-        <NavDesktop items={MAIN_NAV} />
+          <div className="flex-1" />
 
-        <div className="flex items-center">
-          <Separator
-            orientation="vertical"
-            className="mr-2 max-sm:hidden data-vertical:h-5 data-vertical:self-center"
-          />
-          {/* <NavItemGitHub /> */}
-          <NavItemResume/>
-          <Separator
-            orientation="vertical"
-            className="mx-2 data-vertical:h-5 data-vertical:self-center"
-          />
-          <ThemeToggle />
+          <div className="px-4 max-sm:hidden">
+            <NavDesktop items={MAIN_NAV} />
+          </div>
+
+          {/* Boxed like the brand: side borders, with dividers between the actions */}
+          <div className="flex h-full divide-x divide-line border-x border-line">
+            <HeaderCell>
+              <NavItemResume />
+            </HeaderCell>
+            <HeaderCell>
+              <ThemeToggle />
+            </HeaderCell>
+          </div>
         </div>
       </div>
     </header>
+  )
+}
+
+function HeaderCell({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "flex h-full items-center px-1.5",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function HeaderNote({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute flex items-center font-mono text-[10px] leading-none whitespace-nowrap text-muted-foreground/50 select-none",
+        className
+      )}
+      {...props}
+    />
   )
 }
