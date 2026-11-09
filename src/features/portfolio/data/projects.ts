@@ -9,6 +9,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/satvik-Hecker/vyay",
     liveUrl: "https://vyay.site",
     status: "live",
+    image: "/projects/vyay-dashboard.webp",
     skills: ["Next.js", "Express.js", "MongoDB", "Gemini"],
     description:
       "Personal finance tracker to log, categorize and analyze daily expenses, backed by a secure, rate-limited REST API.",

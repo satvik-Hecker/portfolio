@@ -2,12 +2,13 @@ import Image from "next/image"
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { addQueryParams } from "@/utils/url"
 import { HoverBrackets } from "@/components/hover-brackets"
 import { GitHubIcon } from "@/components/icons"
 import { Tag } from "@/components/ui/tag"
 
-import { findTechIcon } from "../../tech-stack-icon"
+import { findTechColor, findTechIcon } from "../../tech-stack-icon"
 import type { Project } from "../../types/projects"
 
 function ProjectImage({ project }: { project: Project }) {
@@ -37,15 +38,24 @@ function ProjectImage({ project }: { project: Project }) {
 
 function TechTag({ name }: { name: string }) {
   const icon = findTechIcon(name)
-  const iconClass =
-    "size-3.5 object-contain grayscale transition-[filter] duration-300 group-hover/project:grayscale-0"
+  const color = findTechColor(name)
+  const iconClass = "size-3.5 object-contain"
   return (
-    <Tag className="gap-1">
+    <Tag
+      className={cn(
+        "gap-1",
+        // Tint the tag with the tech's brand color; the text is mixed toward
+        // the foreground so pale brands (yellow, cyan) stay readable on both themes
+        color &&
+          "border-(--tag-color)/35 bg-(--tag-color)/10 text-[color-mix(in_oklab,var(--tag-color)_65%,var(--foreground))] dark:bg-(--tag-color)/10"
+      )}
+      style={color ? ({ "--tag-color": color } as React.CSSProperties) : undefined}
+    >
       {icon && (
         <img
           src={icon.light}
           alt=""
-          className={`${iconClass} ${icon.dark ? "dark:hidden" : ""}`}
+          className={cn(iconClass, icon.dark && "dark:hidden")}
           loading="lazy"
         />
       )}
@@ -53,7 +63,7 @@ function TechTag({ name }: { name: string }) {
         <img
           src={icon.dark}
           alt=""
-          className={`${iconClass} hidden dark:block`}
+          className={cn(iconClass, "hidden dark:block")}
           loading="lazy"
         />
       )}
@@ -63,7 +73,7 @@ function TechTag({ name }: { name: string }) {
 }
 
 const LINK_CLASS =
-  "flex items-center gap-1.5 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+  "group/link flex items-center gap-1.5 border border-line bg-foreground/5 px-2 py-1 font-mono text-sm text-muted-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/10 hover:text-foreground focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -86,7 +96,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </h3>
 
         {project.description && (
-          <p className="line-clamp-2 font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             {project.description}
           </p>
         )}
@@ -101,7 +111,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </ul>
         )}
 
-        <div className="mt-auto flex items-center gap-4 border-t border-dashed border-line pt-3">
+        <div className="mt-auto flex items-center gap-2 border-t border-dashed border-line pt-3">
           {project.githubUrl && (
             <a
               className={LINK_CLASS}
@@ -122,7 +132,7 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               aria-label={`${project.title} live site`}
             >
-              <ArrowUpRightIcon className="size-4" />
+              <ArrowUpRightIcon className="size-4 transition-transform duration-300 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
               Live
             </a>
           )}

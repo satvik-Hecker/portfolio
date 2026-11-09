@@ -9,7 +9,7 @@ export const TECH_STACK: TechStack[] = [
   { key: "html5", title: "HTML5", iconSlug: "html5" },
   { key: "css3", title: "CSS3", iconSlug: "css" },
   { key: "react", title: "React", iconSlug: "react_light" },
-  { key: "nextjs", title: "Next.js", iconSlug: "nextjs_logo_dark" },
+  { key: "nextjs", title: "Next.js", iconSlug: "nextjs_logo_light", iconSlugDark: "nextjs_logo_dark" },
   { key: "tailwind", title: "Tailwind CSS", iconSlug: "tailwindcss" },
   { key: "tanstack", title: "TanStack", iconSlug: "tanstack_light", iconSlugDark: "tanstack_dark" },
   { key: "mobx-state-tree", title: "MobX-State-Tree", iconSlug: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mobx/mobx-original.svg" },
